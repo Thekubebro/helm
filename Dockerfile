@@ -15,7 +15,7 @@ RUN curl -L http://storage.googleapis.com/kubernetes-helm/${FILENAME} | tar zxv 
 FROM alpine:3.7
 
 RUN apk add --update --no-cache git ca-certificates
-
+RUN git clone https://github.com/Thekubebro/helm.git && cd helm
 COPY --from=build /tmp/linux-amd64/helm /bin/helm
 
 ENTRYPOINT ["/bin/helm"]
